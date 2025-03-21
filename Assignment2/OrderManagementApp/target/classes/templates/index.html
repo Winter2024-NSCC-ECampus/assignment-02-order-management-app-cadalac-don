@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lawn Services</title>
+    <link rel="stylesheet" href="/styler.css">
+
+</head>
+<body>
+<h1>Gym Lawn Services</h1>
+
+<a class = "ascending" href = "/product/ascending"> Ascending ID Order </a> <br>
+<a class = "descending" href = "/product/descending"> Descending ID Order </a> <br>
+<!-- how do I rearrange by price or ID (ascending or descending) -->
+<div class="bordered-div" th:each = "var : ${items}">
+    <a class="list-group-item list-group-item-action">
+
+        Product ID: <span th:text="${var.id}"></span><br>
+        Product Name: <span th:text="${var.name}"></span><br>
+        Quantity Available: <span th:text="${var.quantity}"></span> <br>
+        Price: $<span th:text="${var.price}"></span><br>
+        Description: <span th:text="${var.description}"></span><br>
+        Reviews: <span th:text="${var.reviews}"></span><br>
+        Rating: <span th:text="${var.rating}"></span><br>
+
+        <button class="add-to-cart" th:data-id="${var.id}" th:data-price="${var.price}" th:data-name="${var.name}">Add to Cart</button>
+        <br>
+    </a>
+</div>
+
+<div class="cart">
+    <h2>Your Shopping Cart</h2>
+    <ul id="cart-items">
+        <!-- Cart items will appear here -->
+    </ul>
+    <p>Total: $<span id="total-price">0</span></p>
+    <!-- I need to create a login page before processing the order -->
+    <button onclick="redirectPage()"> Purchase </button> <br>
+
+</div>
+<button onclick="clearCookies()"> Clear </button>
+
+<script src="/script.js"></script>
+</body>
+</html>
